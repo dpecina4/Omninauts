@@ -1,0 +1,6 @@
+{
+  "name": "Omninauts",
+  "description": "Bioluminescent subterranean squad puzzle and rescue strategy game with elemental Pyronauts, Hydronauts, and Voltnauts, procedural cavern biomes, and themed base labs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

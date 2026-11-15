@@ -1,0 +1,345 @@
+{
+  "entities": {
+    "CommanderProfile": {
+      "title": "CommanderProfile",
+      "description": "Player base profile, tutorial progress, and themed elemental resource & egg inventory.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Authenticated Firebase UID owning this profile."
+        },
+        "callsign": {
+          "type": "string",
+          "description": "Commander display callsign."
+        },
+        "highestTutorialCleared": {
+          "type": "integer",
+          "description": "Highest tutorial sector completed (0 to 3)."
+        },
+        "totalRescues": {
+          "type": "integer",
+          "description": "Total rescue pods extracted across all expeditions."
+        },
+        "totalExpeditions": {
+          "type": "integer",
+          "description": "Total expeditions completed."
+        },
+        "bossesDefeated": {
+          "type": "integer",
+          "description": "Total cavern bosses defeated."
+        },
+        "fuelCells": {
+          "type": "integer",
+          "description": "Pyro resource: Thermal Fuel Cells."
+        },
+        "sparkFlint": {
+          "type": "integer",
+          "description": "Pyro resource: Spark-Flint Shards."
+        },
+        "magmaMatches": {
+          "type": "integer",
+          "description": "Pyro resource: Magma-Core Matches."
+        },
+        "glassJars": {
+          "type": "integer",
+          "description": "Hydro resource: Distilled Glass Jars."
+        },
+        "dewVials": {
+          "type": "integer",
+          "description": "Hydro resource: Abyssal Dew Vials."
+        },
+        "cryoCondensers": {
+          "type": "integer",
+          "description": "Hydro resource: Cryo-Filter Condensers."
+        },
+        "capacitorChips": {
+          "type": "integer",
+          "description": "Volt resource: Micro-Capacitor Chips."
+        },
+        "caveBatteries": {
+          "type": "integer",
+          "description": "Volt resource: Cave-Cell Batteries."
+        },
+        "copperCoils": {
+          "type": "integer",
+          "description": "Volt resource: Copper Relay Coils."
+        },
+        "pyroEggs": {
+          "type": "integer",
+          "description": "Reserve Pyro elemental eggs."
+        },
+        "hydroEggs": {
+          "type": "integer",
+          "description": "Reserve Hydro elemental eggs."
+        },
+        "voltEggs": {
+          "type": "integer",
+          "description": "Reserve Volt elemental eggs."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp (FieldValue.serverTimestamp())."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server last update timestamp (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": [
+        "userId",
+        "callsign",
+        "highestTutorialCleared",
+        "totalRescues",
+        "totalExpeditions",
+        "bossesDefeated",
+        "fuelCells",
+        "sparkFlint",
+        "magmaMatches",
+        "glassJars",
+        "dewVials",
+        "cryoCondensers",
+        "capacitorChips",
+        "caveBatteries",
+        "copperCoils",
+        "pyroEggs",
+        "hydroEggs",
+        "voltEggs",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "ElementalLabState": {
+      "title": "ElementalLabState",
+      "description": "Themed Base Lab unlock state, tier, and unlocked foot soldier upgrade nodes for a single element.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Authenticated Firebase UID."
+        },
+        "elementId": {
+          "type": "string",
+          "enum": ["pyro", "hydro", "volt"],
+          "description": "Elemental lineage identifier."
+        },
+        "unlocked": {
+          "type": "boolean",
+          "description": "Whether this elemental lab is unlocked at base."
+        },
+        "labTier": {
+          "type": "integer",
+          "description": "Lab facility tier (1 to 5)."
+        },
+        "unlockedUpgrades": {
+          "type": "array",
+          "description": "List of unlocked foot-soldier upgrade node IDs (max 24)."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp (FieldValue.serverTimestamp())."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": [
+        "userId",
+        "elementId",
+        "unlocked",
+        "labTier",
+        "unlockedUpgrades",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "LeaderState": {
+      "title": "LeaderState",
+      "description": "Permanent elemental leader progression, stats, and unlocked elemental combat/utility abilities.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Authenticated Firebase UID."
+        },
+        "elementId": {
+          "type": "string",
+          "enum": ["pyro", "hydro", "volt"],
+          "description": "Leader elemental affinity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Leader name (e.g., Ignis Prime)."
+        },
+        "unlocked": {
+          "type": "boolean",
+          "description": "Whether this leader is unlocked for deployment."
+        },
+        "level": {
+          "type": "integer",
+          "description": "Leader current level (1 to 20)."
+        },
+        "xp": {
+          "type": "integer",
+          "description": "Accumulated experience points."
+        },
+        "maxHp": {
+          "type": "integer",
+          "description": "Leader base maximum health."
+        },
+        "attackPower": {
+          "type": "integer",
+          "description": "Leader base attack power."
+        },
+        "unlockedSkills": {
+          "type": "array",
+          "description": "Unlocked elemental leader skill IDs (max 12)."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp (FieldValue.serverTimestamp())."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": [
+        "userId",
+        "elementId",
+        "name",
+        "unlocked",
+        "level",
+        "xp",
+        "maxHp",
+        "attackPower",
+        "unlockedSkills",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "ExpeditionRecord": {
+      "title": "ExpeditionRecord",
+      "description": "Immutable log entry of a completed tutorial or procedural cavern expedition.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Authenticated Firebase UID."
+        },
+        "sectorId": {
+          "type": "string",
+          "description": "Sector identifier."
+        },
+        "sectorName": {
+          "type": "string",
+          "description": "Human-readable sector or generated planet/cavern name."
+        },
+        "seed": {
+          "type": "integer",
+          "description": "Procedural dungeon seed."
+        },
+        "biome": {
+          "type": "string",
+          "enum": [
+            "FUNGAL_GROTTO",
+            "BASALT_RIFT",
+            "CRYSTAL_CISTERN",
+            "DYNAMO_RUINS",
+            "STORM_CHASM"
+          ],
+          "description": "Biome classification."
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "CLEAR",
+            "SPORE_MIST",
+            "BRINE_RAIN",
+            "ION_SURGE",
+            "THERMAL_UPDRAFT"
+          ],
+          "description": "Weather anomaly active in the cavern."
+        },
+        "rescuedCount": {
+          "type": "integer",
+          "description": "Number of pods rescued."
+        },
+        "totalPods": {
+          "type": "integer",
+          "description": "Total rescue pods in sector."
+        },
+        "bossDefeated": {
+          "type": "boolean",
+          "description": "Whether the sector boss was defeated."
+        },
+        "victory": {
+          "type": "boolean",
+          "description": "Whether the expedition succeeded."
+        },
+        "rank": {
+          "type": "string",
+          "enum": ["S", "A", "B", "C", "F"],
+          "description": "Mission grade."
+        },
+        "durationSeconds": {
+          "type": "integer",
+          "description": "Elapsed mission duration in seconds."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": [
+        "userId",
+        "sectorId",
+        "sectorName",
+        "seed",
+        "biome",
+        "weather",
+        "rescuedCount",
+        "totalPods",
+        "bossDefeated",
+        "victory",
+        "rank",
+        "durationSeconds",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/CommanderProfile"
+      },
+      "description": "Commander profile and themed elemental resource inventory."
+    },
+    "/users/{userId}/labs/{labId}": {
+      "schema": {
+        "$ref": "#/entities/ElementalLabState"
+      },
+      "description": "Themed elemental labs and foot-soldier upgrade trees."
+    },
+    "/users/{userId}/leaders/{leaderId}": {
+      "schema": {
+        "$ref": "#/entities/LeaderState"
+      },
+      "description": "Permanent elemental leaders and their leveled abilities."
+    },
+    "/users/{userId}/expeditions/{expeditionId}": {
+      "schema": {
+        "$ref": "#/entities/ExpeditionRecord"
+      },
+      "description": "Completed procedural and tutorial expedition history."
+    }
+  }
+}
